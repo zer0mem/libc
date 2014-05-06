@@ -21,7 +21,7 @@ __cdecl malloc(
 {
 	MEMBLOCK *pBlock = static_cast<MEMBLOCK*>(
 		ExAllocatePoolWithTag(
-			NonPagedPoolCacheAlignedMustS, 
+			NonPagedPoolNxCacheAligned, 
 			size + sizeof(MEMBLOCK), 
 			_LIBC_POOL_TAG));
 

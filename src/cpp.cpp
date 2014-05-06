@@ -11,7 +11,6 @@ __cdecl atexit(
 	if (!destructor)
 		return 0;
 
-	//_kebreak();
 	ATEXIT_ENTRY* entry = new ATEXIT_ENTRY(destructor, g_pTopAtexitEntry);
 	if (!entry)
 		return 0;
