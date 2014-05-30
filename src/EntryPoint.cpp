@@ -4,10 +4,10 @@
 
 #ifdef CPP_DRIVER_COMMON
 
-#include <Common/base/CppDriver.h>
+#include <Common/kernel/CppDriver.h>
 
 CCppDriver CCppDriver::m_instance;
-const DRIVER_OBJECT* CCppDriver::g_pDriverObject = nullptr;
+DRIVER_OBJECT* CCppDriver::g_pDriverObject = nullptr;
 
 #define STATIC_DRIVER_OBJECT CCppDriver::GetInstance().DriverObject()
 #define CPP_MAIN CCppDriver::GetInstance().Main

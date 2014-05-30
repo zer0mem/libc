@@ -33,6 +33,22 @@ __cdecl malloc(
 }
 
 EXTERN_C
+__drv_when(return != 0, __drv_allocatesMem(p))
+__checkReturn
+__drv_maxIRQL(DISPATCH_LEVEL)
+__bcount_opt(size * n)
+void*
+__cdecl calloc(size_t n, size_t size)
+{
+	size_t total = n * size;
+	void *p = malloc(total);
+
+	if (!p) return NULL;
+
+	return memset(p, 0, total);
+}
+
+EXTERN_C
 __drv_when(return!=0, __drv_allocatesMem(inblock))
 __checkReturn
 __drv_maxIRQL(DISPATCH_LEVEL)
@@ -44,7 +60,7 @@ __cdecl realloc(
 	)
 {
 	if (!ptr)
-		return nullptr;
+		return malloc(size);
 
 	std::unique_ptr<unsigned char> inblock = std::unique_ptr<unsigned char>(static_cast<unsigned char*>(ptr));
 
@@ -55,8 +71,7 @@ __cdecl realloc(
 
 	// copy from old one, not overflow ..
 	memcpy(mem, inblock.get(), min(CONTAINING_RECORD(inblock.get(), MEMBLOCK, data)->size, size));
-
-	return nullptr;
+	return mem;
 }
 
 EXTERN_C
@@ -90,6 +105,16 @@ __cdecl operator delete(
 	__inout void* ptr
 	)
 {
-	if (ptr)
-		free(ptr);
+	free(ptr);
+}
+
+int 
+__cdecl vsnprintf(
+	char *buffer,
+	size_t count,
+	const char *format,
+	va_list argptr
+)
+{
+	return static_cast<int>(DbgPrint(format, argptr));
 }
