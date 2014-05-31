@@ -108,13 +108,5 @@ __cdecl operator delete(
 	free(ptr);
 }
 
-int 
-__cdecl vsnprintf(
-	char *buffer,
-	size_t count,
-	const char *format,
-	va_list argptr
-)
-{
-	return static_cast<int>(DbgPrint(format, argptr));
-}
+//http://www.castaglia.org/proftpd/doc/devel-guide/src/lib/vsnprintf.c.html
+#include "vsnprintf.c"
