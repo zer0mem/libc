@@ -109,7 +109,7 @@ __cdecl operator delete(
 }
 
 int 
-vsnprintf(
+__cdecl vsnprintf(
 	__in_ecount(count) char *buf,
 	__in size_t count,
 	__in const char *fmt,
