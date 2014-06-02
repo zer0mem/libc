@@ -108,5 +108,19 @@ __cdecl operator delete(
 	free(ptr);
 }
 
-//http://www.castaglia.org/proftpd/doc/devel-guide/src/lib/vsnprintf.c.html
-#include "vsnprintf.c"
+int 
+vsnprintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	)
+{
+	if (!g_vsprintf_s_proc)
+		g_vsprintf_s_proc = static_cast<decltype(&_vsprintf_s)>(MmGetSystemRoutineAddress(&g_vsprintf_str));
+
+	if (!g_vsprintf_s_proc)
+		return 0;
+
+	return g_vsprintf_s_proc(buf, count, fmt, args);
+}
