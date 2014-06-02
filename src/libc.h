@@ -15,15 +15,3 @@ struct MEMBLOCK
 	char data[0]; 
 #pragma warning(pop)
 };
-
-int
-__cdecl
-_vsprintf_s(
-	__in_ecount(size) char *buf,
-	__in size_t count,
-	__in const char *fmt,
-	__in va_list args
-	);
-
-static UNICODE_STRING g_vsprintf_str = RTL_CONSTANT_STRING(L"vsprintf_s");
-decltype(&_vsprintf_s) g_vsprintf_s_proc;

@@ -116,11 +116,5 @@ vsnprintf(
 	__in va_list args
 	)
 {
-	if (!g_vsprintf_s_proc)
-		g_vsprintf_s_proc = static_cast<decltype(&_vsprintf_s)>(MmGetSystemRoutineAddress(&g_vsprintf_str));
-
-	if (!g_vsprintf_s_proc)
-		return 0;
-
-	return g_vsprintf_s_proc(buf, count, fmt, args);
+	return vsprintf_s(buf, count, fmt, args);
 }
