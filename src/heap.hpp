@@ -51,9 +51,9 @@ typedef struct _RTL_CRITICAL_SECTION {
 void*
 NTAPI
 UserMalloc(
-	__in POOL_TYPE a,
+	__in POOL_TYPE,
 	__in SIZE_T size,
-	__in ULONG b
+	__in ULONG
 	)
 {
 	return HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, size);
@@ -62,7 +62,7 @@ UserMalloc(
 void
 UserFree(
 	__in void* mem,
-	__in ULONG a
+	__in ULONG
     )
 {
 	HeapFree(GetProcessHeap(), HEAP_ZERO_MEMORY, mem);
