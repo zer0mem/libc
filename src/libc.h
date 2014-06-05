@@ -14,7 +14,7 @@ struct MEMBLOCK
 #pragma warning(pop)
 };
 
-#ifndef R32R0
+#ifdef R32R0
 #include "heap.hpp"
 decltype(&ExAllocatePoolWithTag) xalloc = UserMalloc;
 decltype(&ExFreePoolWithTag) xfree = UserFree;
