@@ -1,5 +1,3 @@
-#pragma once
-
 #include <ntifs.h>
 
 _CRTIMP
@@ -10,7 +8,5 @@ __cdecl _wassert(
 	__in unsigned line
 	) 
 {
-	DbgBreakPoint();
-	DbgBreakPoint();
 	return; 
 }

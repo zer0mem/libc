@@ -1,3 +1,8 @@
+IFDEF RAX
+ELSE
+ .model flat
+ENDIF
+
 .code
 
 _CxxThrowException proc
@@ -6,7 +11,6 @@ _CxxThrowException proc
 _CxxThrowException endp
 
 _wassert proc
-	xor rax, rax
 	ret
 _wassert endp
 
