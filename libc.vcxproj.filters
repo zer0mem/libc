@@ -16,25 +16,34 @@
     <Filter Include="Source Files\amd64">
       <UniqueIdentifier>{8d77a827-bdc1-47fe-973a-d90c8779da50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LIBC">
+      <UniqueIdentifier>{7d45792e-8fc8-4b0b-a729-d8c817122ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IMPL">
+      <UniqueIdentifier>{7ed3ee1c-3d23-47b7-92f6-4294812b1437}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\cpp.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\heap.cpp">
+      <Filter>Source Files\IMPL</Filter>
     </ClCompile>
-    <ClCompile Include="src\libc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\stdExc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EntryPoint.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\pool.cpp">
+      <Filter>Source Files\IMPL</Filter>
     </ClCompile>
     <ClCompile Include="src\assert.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp.cpp">
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libc.cpp">
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdExc.cpp">
+      <Filter>Source Files\LIBC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,12 +53,18 @@
     <ClInclude Include="src\libc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\heap.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\heap.h">
+      <Filter>Source Files\IMPL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pool.h">
+      <Filter>Source Files\IMPL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="src\amd64\exc.asm">
+      <Filter>Source Files\amd64</Filter>
+    </MASM>
+    <MASM Include="src\amd64\cc.asm">
       <Filter>Source Files\amd64</Filter>
     </MASM>
   </ItemGroup>
