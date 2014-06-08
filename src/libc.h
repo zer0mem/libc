@@ -1,25 +1,31 @@
 #pragma once
 
-#ifndef _LIBC_POOL_TAG
-#define _LIBC_POOL_TAG	'colM'
-#endif
+#define _CRT_ALLOCATION_DEFINED
 
-// very nice for debug forensics!
-struct MEMBLOCK
-{
-	size_t	size;
-#pragma warning(push)               
-#pragma warning (disable : 4200)
-	char data[0]; 
-#pragma warning(pop)
-};
+#include <sal.h>
 
-#ifdef R32R0
-#include "heap.hpp"
-decltype(&ExAllocatePoolWithTag) xalloc = UserMalloc;
-decltype(&ExFreePoolWithTag) xfree = UserFree;
-#else
-#include <ntifs.h>
-decltype(&ExAllocatePoolWithTag) xalloc = ExAllocatePoolWithTag;
-decltype(&ExFreePoolWithTag) xfree = ExFreePoolWithTag;
-#endif
+extern "C"
+void*
+__cdecl
+malloc(
+	__in size_t size
+	);
+
+extern "C"
+void
+__cdecl
+free(
+	__inout void* ptr
+	);
+
+extern "C"
+void*
+__cdecl
+realloc(
+	__inout_opt void* ptr,
+	__in size_t size
+	);
+
+extern decltype(&malloc) cc_alloc;
+extern decltype(&free) cc_free;
+extern decltype(&realloc) cc_realloc;

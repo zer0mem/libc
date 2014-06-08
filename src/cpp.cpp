@@ -1,10 +1,9 @@
-#pragma once
-
 #include "cpp.h"
 
-EXTERN_C
+extern "C"
 int
-__cdecl atexit(
+__cdecl  
+atexit(
 	__in void(__cdecl *destructor)(void)
 	)
 {
@@ -42,12 +41,13 @@ void(*___StlStartTerminateCalls__[1])(void) = { 0 };
 void(*___StlEndTerminateCalls__[1])(void) = { 0 };
 #pragma data_seg()
 
-EXTERN_C
+extern "C"
 void
-__cdecl doexit(
-	__in int /*code*/,
-	__in int /*quick*/,
-	__in int /*retcaller*/
+__cdecl 
+cc_doexit(
+	__in int,
+	__in int,
+	__in int
 	)
 {
 	for (ATEXIT_ENTRY* entry = g_pTopAtexitEntry; entry;)
@@ -58,14 +58,15 @@ __cdecl doexit(
 	}
 }
 
-EXTERN_C
+extern "C"
 int
-__cdecl _cinit(
+__cdecl 
+cc_init(
 	__in int
 	)
 {
 	for (void(**ctor)(void) = __ctors_begin__ + 1;
-		ctor < __ctors_end__;
+		*ctor && ctor < __ctors_end__;
 		ctor++)
 	{
 		(*ctor)();

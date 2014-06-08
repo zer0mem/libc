@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ntifs.h>
+#include <sal.h>
 
 struct ATEXIT_ENTRY
 {
@@ -24,16 +24,25 @@ struct ATEXIT_ENTRY
 
 static ATEXIT_ENTRY* g_pTopAtexitEntry = nullptr;
 
-EXTERN_C
+extern "C"
 int
-__cdecl _cinit(
+__cdecl 
+cc_atexit(
+	__in void(__cdecl *destructor)(void)
+	);
+
+extern "C"
+int
+__cdecl 
+cc_init(
 	__in int
 	);
 
-EXTERN_C
+extern "C"
 void
-__cdecl doexit(
-	__in int /*code*/,
-	__in int /*quick*/,
-	__in int /*retcaller*/
+__cdecl 
+cc_doexit(
+	__in int,
+	__in int,
+	__in int
 	);

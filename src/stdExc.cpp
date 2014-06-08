@@ -2,21 +2,20 @@
 	- very dangerous "implementation"
 	- for real use, necessary proper handling!
 */
-
-#pragma once
-
 #include <ntifs.h>
 
 namespace std
 {
 	void
-	__cdecl _Xbad_alloc() 
+	__cdecl 
+	_Xbad_alloc() 
 	{ 
 		DbgBreakPoint(); 
 	}
 
 	void 
-	__cdecl _Xlength_error(
+	__cdecl 
+	_Xlength_error(
 		__in char const*
 		) 
 	{ 
@@ -24,7 +23,8 @@ namespace std
 	}
 
 	void 
-	__cdecl _Xout_of_range(
+	__cdecl 
+	_Xout_of_range(
 		__in char const*
 		) 
 	{ 
@@ -32,7 +32,8 @@ namespace std
 	}
 
 	char const* 
-	__cdecl _Syserror_map(
+	__cdecl 
+	_Syserror_map(
 		__in int
 		) 
 	{ 
@@ -41,7 +42,8 @@ namespace std
 	}
 
 	char const* 
-	__cdecl _Winerror_map(
+	__cdecl 
+	_Winerror_map(
 		__in int
 		) 
 	{ 
@@ -50,10 +52,9 @@ namespace std
 	}
 };
 
-EXTERN_C
-_CRTIMP 
+extern "C"
 EXCEPTION_DISPOSITION 
-__CxxFrameHandler3(
+ExCxxFrameHandler3(
 	__in void* pExcept, // Information for this exception
 	__in ULONG_PTR RN, // Dynamic information for this frame
 	__in void* pContext, // Context info
