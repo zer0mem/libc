@@ -38,6 +38,26 @@ PoolReAlloc(
 	__in size_t size
 	);
 
+__drv_maxIRQL(DISPATCH_LEVEL)
+int
+__cdecl 
+VsPrintfS(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	);
+
+__drv_maxIRQL(DISPATCH_LEVEL)
+int
+__cdecl 
+PoolVsnPrintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	);
+
 extern "C"
 __drv_maxIRQL(DISPATCH_LEVEL)
 void*

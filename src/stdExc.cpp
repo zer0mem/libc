@@ -64,3 +64,45 @@ ExCxxFrameHandler3(
 	DbgBreakPoint();
 	return EXCEPTION_DISPOSITION::ExceptionNestedException;
 }
+
+extern "C"
+void
+__fastcall
+__security_check_cookie(
+	__in void*
+	)
+{
+}
+
+#ifdef _WIN64
+
+extern "C"
+const DWORD_PTR 
+__security_cookie = 0;
+
+extern "C"
+void 
+_CxxThrowException(
+	__in void *, 
+	__in _ThrowInfo *
+	)
+{
+}
+
+#else
+
+extern 
+"C" const
+DWORD_PTR
+__security_cookie = 0;
+
+extern "C"
+void 
+_CxxThrowException(
+	__in void *, 
+	__in _ThrowInfo *
+	)
+{
+}
+
+#endif

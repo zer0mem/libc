@@ -2,10 +2,14 @@
 
 #include <sal.h>
 
+typedef void(__cdecl *Destructor_t)(
+	void
+	);
+
 struct ATEXIT_ENTRY
 {
 	ATEXIT_ENTRY(
-		__in void(__cdecl *destructor)(void),
+		__in Destructor_t destructor,
 		__in ATEXIT_ENTRY* next
 		)
 	{
@@ -18,7 +22,7 @@ struct ATEXIT_ENTRY
 		Destructor();
 	}
 
-	void(_cdecl *Destructor)();
+	Destructor_t Destructor;
 	ATEXIT_ENTRY* Next;
 };
 

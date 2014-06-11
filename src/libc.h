@@ -3,6 +3,8 @@
 #define _CRT_ALLOCATION_DEFINED
 
 #include <sal.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 extern "C"
 void*
@@ -25,7 +27,13 @@ realloc(
 	__inout_opt void* ptr,
 	__in size_t size
 	);
-
-extern decltype(&malloc) cc_alloc;
-extern decltype(&free) cc_free;
-extern decltype(&realloc) cc_realloc;
+/*
+int
+__cdecl 
+vsnprintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	);
+*/

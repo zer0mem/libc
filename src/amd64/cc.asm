@@ -3,23 +3,25 @@ IFDEF RAX
 extrn _cc_alloc:near
 extrn _cc_realloc:near
 extrn _cc_free:near
+extrn _cc_vsnprintf:near
 
 .code
 
 malloc proc
-	mov rax, qword ptr _cc_alloc
-	jmp qword ptr [rax]
+	jmp qword ptr _cc_alloc
 malloc endp
              
 realloc proc
-	mov rax, qword ptr _cc_realloc
-	jmp qword ptr [rax]
+	jmp qword ptr _cc_realloc
 realloc endp
 
 free proc
-	mov rax, qword ptr _cc_free
-	jmp qword ptr [rax]
+	jmp qword ptr _cc_free
 free endp
+
+vsnprintf proc
+	jmp qword ptr _cc_vsnprintf
+vsnprintf endp
 
 ELSE
  .model flat
@@ -27,23 +29,25 @@ ELSE
 extrn __cc_alloc:near
 extrn __cc_realloc:near
 extrn __cc_free:near
+extrn __cc_vsnprintf:near
 
 .code
 
 _malloc proc
-	mov eax, dword ptr __cc_alloc
-	jmp dword ptr [eax]
+	jmp dword ptr __cc_alloc
 _malloc endp
              
 _realloc proc
-	mov eax, dword ptr __cc_realloc
-	jmp dword ptr [eax]
+	jmp dword ptr __cc_realloc
 _realloc endp
 
 _free proc
-	mov eax, dword ptr __cc_free
-	jmp dword ptr [eax]
+	jmp dword ptr __cc_free
 _free endp
+
+_vsnprintf proc
+	jmp dword ptr __cc_vsnprintf
+_vsnprintf endp
 
 ENDIF
 

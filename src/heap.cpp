@@ -1,6 +1,7 @@
 #include "heap.h"
 
-HANDLE gCrtHeap = NULL;
+HANDLE gCrtHeap = NULL; 
+decltype(&vsnprintf) gMsvcrtVsnprintf = nullptr;
 
 void*
 __cdecl
@@ -28,4 +29,17 @@ UserRealloc(
 	)
 {
 	return HeapReAlloc(gCrtHeap, HEAP_ZERO_MEMORY, mem, size);
+}
+
+int
+__cdecl 
+UserVsnPrintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	)
+{
+	//very ugly ... 
+	return gMsvcrtVsnprintf(buf, count, fmt, args);
 }

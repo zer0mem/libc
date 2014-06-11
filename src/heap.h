@@ -6,7 +6,10 @@
 #include <Windows.h>
 #endif
 
+#include <stdio.h>
+
 extern HANDLE gCrtHeap;
+extern decltype(&vsnprintf) gMsvcrtVsnprintf;
 
 void*
 __cdecl
@@ -25,4 +28,13 @@ __cdecl
 UserRealloc(
 	__in_opt void* mem,
 	__in size_t size
+	);
+
+int
+__cdecl 
+UserVsnPrintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
 	);

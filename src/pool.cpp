@@ -62,6 +62,19 @@ PoolReAlloc(
 	return mem;
 }
 
+__drv_maxIRQL(DISPATCH_LEVEL)
+int
+__cdecl 
+PoolVsnPrintf(
+	__in_ecount(count) char *buf,
+	__in size_t count,
+	__in const char *fmt,
+	__in va_list args
+	)
+{
+	return VsPrintfS(buf, count, fmt, args);
+}
+
 extern "C"
 __drv_maxIRQL(DISPATCH_LEVEL)
 void*
@@ -85,16 +98,3 @@ calloc(
 	return memset(p, 0, total);
 }
 #pragma warning(pop)
-
-extern "C"
-int
-__cdecl 
-vsnprintf(
-	__in_ecount(count) char *buf,
-	__in size_t count,
-	__in const char *fmt,
-	__in va_list args
-	)
-{
-	return vsprintf_s(buf, count, fmt, args);
-}
