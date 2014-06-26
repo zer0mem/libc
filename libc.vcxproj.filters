@@ -42,9 +42,6 @@
     <ClCompile Include="src\libc.cpp">
       <Filter>Source Files\LIBC</Filter>
     </ClCompile>
-    <ClCompile Include="src\stdExc.cpp">
-      <Filter>Source Files\LIBC</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cpp.h">
@@ -62,9 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <MASM Include="src\amd64\exc.asm">
-      <Filter>Source Files\amd64</Filter>
-    </MASM>
-    <MASM Include="src\amd64\cc.asm">
       <Filter>Source Files\amd64</Filter>
     </MASM>
   </ItemGroup>
