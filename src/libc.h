@@ -4,7 +4,19 @@
 
 #include <sal.h>
 #include <stdarg.h>
-#include <stdio.h>
+
+#define _LIBC_POOL_TAG 'LIBC'
+
+#pragma pack(push, 1)
+struct MEMBLOCK
+{
+	size_t	size;
+#pragma warning(push)               
+#pragma warning (disable : 4200)
+	char data[0];
+#pragma warning(pop)
+};
+#pragma pack(pop)
 
 extern "C"
 void*
@@ -27,7 +39,17 @@ realloc(
 	__inout_opt void* ptr,
 	__in size_t size
 	);
-/*
+
+extern "C"
+void*
+__cdecl 
+calloc(
+	__in size_t n, 
+	__in size_t size
+	);
+
+
+extern "C"
 int
 __cdecl 
 vsnprintf(
@@ -36,4 +58,11 @@ vsnprintf(
 	__in const char *fmt,
 	__in va_list args
 	);
-*/
+
+extern "C"
+int
+__cdecl 
+printf(
+	__in const char* fmt,
+	...
+	);
