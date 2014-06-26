@@ -171,20 +171,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\cpp.cpp" />
-    <ClCompile Include="src\heap.cpp" />
+    <ClCompile Include="src\except.cpp" />
     <ClCompile Include="src\libc.cpp" />
-    <ClCompile Include="src\pool.cpp" />
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="src\std.cpp" />
+    <ClCompile Include="src\typeinfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cpp.h" />
-    <ClInclude Include="src\heap.h" />
     <ClInclude Include="src\libc.h" />
-    <ClInclude Include="src\pool.h" />
   </ItemGroup>
-  <ItemGroup>                          
+  <ItemGroup>
     <MASM Include="src\amd64\exc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </ExcludedFromBuild>

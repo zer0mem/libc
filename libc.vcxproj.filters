@@ -19,20 +19,11 @@
     <Filter Include="Source Files\LIBC">
       <UniqueIdentifier>{7d45792e-8fc8-4b0b-a729-d8c817122ed8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\IMPL">
-      <UniqueIdentifier>{7ed3ee1c-3d23-47b7-92f6-4294812b1437}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\heap.cpp">
-      <Filter>Source Files\IMPL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pool.cpp">
-      <Filter>Source Files\IMPL</Filter>
-    </ClCompile>
     <ClCompile Include="src\assert.cpp">
       <Filter>Source Files\LIBC</Filter>
     </ClCompile>
@@ -42,6 +33,15 @@
     <ClCompile Include="src\libc.cpp">
       <Filter>Source Files\LIBC</Filter>
     </ClCompile>
+    <ClCompile Include="src\except.cpp">
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\std.cpp">
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\typeinfo.cpp">
+      <Filter>Source Files\LIBC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cpp.h">
@@ -49,12 +49,6 @@
     </ClInclude>
     <ClInclude Include="src\libc.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\heap.h">
-      <Filter>Source Files\IMPL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\pool.h">
-      <Filter>Source Files\IMPL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
